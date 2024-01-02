@@ -51,6 +51,6 @@ class EmpApi (private val empService : EmpService){
     fun delete(
             @PathVariable empId: String): ResponseEntity<String> {
         empService.delete(empId)
-        return ResponseEntity("Employee deleted successfully", HttpStatus.OK)
+        return ResponseEntity("Emp deleted successfully", HttpStatus.OK)
     }
 }

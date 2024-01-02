@@ -24,8 +24,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	implementation 'com.google.code.gson:gson:2.9.0'
 	runtimeOnly 'com.h2database:h2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//junit test 사용을 위해 설정
+	testImplementation('org.springframework.boot:spring-boot-starter-test'){
+		exclude module : 'junit'
+	}
+	testImplementation('org.junit.jupiter:junit-jupiter-api')
+	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine')
 }
 
 tasks.withType(KotlinCompile) {
@@ -35,6 +41,6 @@ tasks.withType(KotlinCompile) {
 	}
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }

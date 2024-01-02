@@ -4,6 +4,7 @@ import com.example.app.emp.domain.EmpEntity
 import com.example.app.emp.dto.EmpDTO
 import com.example.app.emp.repository.EmpRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Service
@@ -19,12 +20,14 @@ class EmpService (private val empRepository : EmpRepository) {
         return empRepository.findByEmpId(empId)
     }
 
+    @Transactional
     //등록
     fun add(emp: EmpDTO): EmpEntity {
-        val addEmp = emp.create()
+        val addEmp = emp.createEntity()
         return empRepository.save(addEmp)
     }
 
+    @Transactional
     //수정
     fun modify(emp: EmpDTO): EmpEntity? {
         val empEntity = empRepository.findByEmpId(emp.empId);
@@ -38,11 +41,12 @@ class EmpService (private val empRepository : EmpRepository) {
         return null
     }
 
+    @Transactional
     //삭제
     fun delete(empId: String) {
         val empEntity = empRepository.findByEmpId(empId);
         if(empEntity != null)
-        empRepository.deleteByEmpId(empId)
+        empRepository.delete(empEntity)
     }
 
 }

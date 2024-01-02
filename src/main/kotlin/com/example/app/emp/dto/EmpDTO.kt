@@ -11,7 +11,7 @@ data class EmpDTO (
         var email : String
 
 ){
-    fun create() : EmpEntity {
+    fun createEntity() : EmpEntity {
         return EmpEntity(this.empId, this.empNm, this.empNo, this.email, LocalDateTime.now(), LocalDateTime.now())
     }
 
