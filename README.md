@@ -9,3 +9,4 @@ Kotlin 1.9.x
 Java 17
 Spring Boot 3.1.2
 H2 Database
+Junit5
