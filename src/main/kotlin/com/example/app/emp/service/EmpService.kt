@@ -4,6 +4,7 @@ import com.example.app.emp.domain.EmpEntity
 import com.example.app.emp.dto.EmpDTO
 import com.example.app.emp.repository.EmpRepository
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class EmpService (private val empRepository : EmpRepository) {
@@ -19,16 +20,20 @@ class EmpService (private val empRepository : EmpRepository) {
     }
 
     //등록
-    fun add(emp: EmpEntity): EmpEntity {
-        return empRepository.save(emp)
+    fun add(emp: EmpDTO): EmpEntity {
+        val addEmp = emp.create()
+        return empRepository.save(addEmp)
     }
 
     //수정
     fun modify(emp: EmpDTO): EmpEntity? {
         val empEntity = empRepository.findByEmpId(emp.empId);
         if (empEntity != null) {
-            val modifyEmp = emp.modify(empEntity.regYmdt)
-            return empRepository.save(modifyEmp)
+            empEntity.empNm = emp.empNm
+            empEntity.empNo = emp.empNo
+            empEntity.email = emp.email
+            empEntity.modYmdt = LocalDateTime.now()
+            return empEntity
         }
         return null
     }

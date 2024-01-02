@@ -15,7 +15,4 @@ data class EmpDTO (
         return EmpEntity(this.empId, this.empNm, this.empNo, this.email, LocalDateTime.now(), LocalDateTime.now())
     }
 
-    fun modify(regYmdt : LocalDateTime) : EmpEntity{
-        return EmpEntity(this.empId, this.empNm, this.empNo, this.email, regYmdt, LocalDateTime.now())
-    }
 }

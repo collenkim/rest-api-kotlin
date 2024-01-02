@@ -13,17 +13,17 @@ class EmpEntity (
     val empId: String,
 
     @Column(name = "emp_nm", nullable =false)
-    val empNm: String,
+    var empNm: String,
 
     @Column(name = "emp_no", nullable =false)
-    val empNo: String,
+    var empNo: String,
 
     @Column(name = "email", nullable =false)
-    val email: String,
+    var email: String,
 
     @Column(name = "reg_ymdt", nullable =false)
-    val regYmdt : LocalDateTime,
+    var regYmdt : LocalDateTime,
 
     @Column(name = "mod_ymdt", nullable =false)
-    val modYmdt : LocalDateTime
+    var modYmdt : LocalDateTime
 )

@@ -28,7 +28,7 @@ class EmpApi (private val empService : EmpService){
     }
 
     @PostMapping
-    fun add(@RequestBody emp : EmpEntity) : ResponseEntity<EmpEntity>{
+    fun add(@RequestBody emp : EmpDTO) : ResponseEntity<EmpEntity>{
         val addEmp = empService.add(emp)
         return ResponseEntity(addEmp, HttpStatus.CREATED)
     }
